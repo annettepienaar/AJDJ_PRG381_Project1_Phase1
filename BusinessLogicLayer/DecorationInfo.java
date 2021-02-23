@@ -2,6 +2,7 @@ package BusinessLogicLayer;
 
 public class DecorationInfo {
     //Booking Number;Number of Decorations;Decoration Type;Decoration Colour;
+    
     String bookingNumber, decoType, decoColour;
     int decoAmount;
 
