@@ -4,8 +4,10 @@ public class VenueInfo {
     //Venue ID;VenueName;VenueLocation;PhoneNumber
 
     String venueName, venueLocation, venuePhone;
+    int venueID;
 
-    public VenueInfo(String venueName, String venueLocation, String venuePhone) {
+    public VenueInfo(int venueID, String venueName, String venueLocation, String venuePhone) {
+        this.venueID = venueID;
         this.venueName = venueName;
         this.venueLocation = venueLocation;
         this.venuePhone = venuePhone;
@@ -33,5 +35,13 @@ public class VenueInfo {
 
     public void setVenuePhone(String venuePhone) {
         this.venuePhone = venuePhone;
+    }
+
+    public int getVenueID() {
+        return venueID;
+    }
+
+    public void setVenueID(int venueID) {
+        this.venueID = venueID;
     }
 }
