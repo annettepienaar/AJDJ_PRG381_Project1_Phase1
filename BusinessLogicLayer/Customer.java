@@ -1,18 +1,23 @@
 package BusinessLogicLayer;
 
-public class UserInfo {
-    //Name&Surname;PhoneNumber;Email;Address;IDnumber
-    
-    String name, surname, phoneNumber, address, idNumber;
+public class Customer {
+    //Name;Surname;Phone Number;Email;Address;ID Number
+    //Used to track different registered customers
 
-    public UserInfo(String name, String surname, String phoneNumber, String address, String idNumber) {
+    //Fields
+    String name, surname, phoneNumber, email, address, idNumber;
+
+    //Constructor
+    public Customer(String name, String surname, String phoneNumber, String email, String address, String idNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
+        this.email = email;
         this.address = address;
         this.idNumber = idNumber;
     }
 
+    //Getters and Setters
     public String getName() {
         return name;
     }
@@ -37,6 +42,14 @@ public class UserInfo {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -51,5 +64,5 @@ public class UserInfo {
 
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
-    }    
+    }
 }
