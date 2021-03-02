@@ -54,7 +54,7 @@ public class DataAccess {
         }
 
         for (Event info : events) {
-            System.out.println(info.getBookingNumber() + " " + info.getEventType() + " " + info.getEventDate() + " " + info.getEventTime() + " " + info.getConfirmationDate() + " " + info.getFoodID() + " " + info.getVenueID() + " " + info.getDecorationID() + " " + info.getTotalAdults() + " " + info.getTotalKids() + " " + info.getTotalPrice());
+            System.out.println(info.getBookingNumber() + "\t\t" + info.getEventType() + "\t\t" + info.getEventDate() + "\t" + info.getEventTime() + "\t\t" + info.getConfirmationDate() + " \t\t" + info.getFoodID() + "\t\t" + info.getVenueID() + "\t\t" + info.getDecorationID() + "\t\t" + info.getTotalAdults() + "\t\t" + info.getTotalKids() + "\t\t" + info.getTotalPrice());
         }
     }
 

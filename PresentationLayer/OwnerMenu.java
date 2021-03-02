@@ -17,8 +17,6 @@ public class OwnerMenu {
 
     public void showMenu ()
     {
-        List<Event> events = new ArrayList<Event>();
-
         System.out.println("0. View All Bookings");
         System.out.println("1. View all Confirmed Bookings");
         System.out.println("2. View all Non-Confirmed Bookings");
@@ -36,6 +34,7 @@ public class OwnerMenu {
                     //Code for viewing all bookings
 
                     DataAccess obj = new DataAccess();
+                    System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price");
                     obj.getEventInfo();
                     break;
     
