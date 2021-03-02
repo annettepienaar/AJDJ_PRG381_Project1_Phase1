@@ -1,7 +1,7 @@
 package BusinessLogicLayer;
 
 public class Event {
-    //Booking Number;Event Type;Event Date;Event Time;Total Adults;Total Kids;Total Price;Confirmation Date;FoodID;VenueID;DecorationID
+    //Booking Number;Event Type;Event Date;Event Time;Confirmation Date;FoodID;VenueID;DecorationID;Total Adults;Total Kids;Total Price
     //Keeping track of all events that have been registered to date
 
     //Fields

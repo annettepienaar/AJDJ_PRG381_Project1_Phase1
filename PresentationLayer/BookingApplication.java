@@ -2,8 +2,6 @@ package PresentationLayer;
 
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 public class BookingApplication {
     enum Menu {
         Customer,
