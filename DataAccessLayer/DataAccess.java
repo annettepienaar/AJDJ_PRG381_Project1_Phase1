@@ -1,7 +1,6 @@
 package DataAccessLayer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +9,14 @@ import java.io.IOException;
 import BusinessLogicLayer.Event;
 
 public class DataAccess {
-    String FPathCustomer, FPathEvents, FPathVenue, FPathMenu, FPathDecoration;
+    File fPathCustomer, fPathEvent, fPathVenue, fPathMenu, fPathDecoration;
+    public DataAccess(){
+        fPathCustomer = new File("./DataAccessLayer/Customer.txt"); 
+        fPathEvent = new File("./DataAccessLayer/Event.txt");
+        fPathVenue = new File("./DataAccessLayer/Venue.txt");
+        fPathMenu = new File("./DataAccessLayer/Menu.txt");
+        fPathDecoration = new File("./DataAccessLayer/Decoration.txt");
+    }
 
     public void FileInsert()
     {
@@ -30,11 +36,7 @@ public class DataAccess {
     public void getEventInfo() {
         List<Event> events = new ArrayList<Event>();
         try {
-            File myObj = new File("./DataAccessLayer");
-
-            System.out.println("Attempting to read from file in: " + myObj.getCanonicalPath());
-
-            Scanner myReader = new Scanner(myObj);
+            Scanner myReader = new Scanner(fPathEvent);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
