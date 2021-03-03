@@ -1,0 +1,6 @@
+M1;Chicken Platter;170;70
+M2;Beef Platter;160;60
+M3;Pork Platter;190;90
+M4;Vegan Platter;180;80
+M5;Vegetarian Platter;200;100
+M6;Seafood Platter;250;150

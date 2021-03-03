@@ -1,0 +1,4 @@
+V1;Lakeside Casino;5 Maveric ave Delville; 011 489 6625
+V2;Beach Bungalo;35 Horton drive Nashville; 011 256 9752
+V3;Rietvlei Farm;12 Duncan str Ekurhuleni; 011 158 1234
+V4;Hillside Cafe;10 Schubart str Germistone; 011 775 3363

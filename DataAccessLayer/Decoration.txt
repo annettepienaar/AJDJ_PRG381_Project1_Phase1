@@ -1,0 +1,4 @@
+D1;Wedding Decorations;7400
+D2;Birthday Decorations;3500
+D3;Halloween Decorations;5000
+D4;Christmans Decorations;9500
