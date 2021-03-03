@@ -38,7 +38,7 @@ public class DataAccess {
         //Deletetion of info
     }
 
-    public void getEventInfo() {
+    public List<Event> getEventInfo() {
         List<Event> events = new ArrayList<Event>();
         try {
             Scanner myReader = new Scanner(fPathEvent);
@@ -58,9 +58,7 @@ public class DataAccess {
             e.printStackTrace();
         }
 
-        for (Event info : events) {
-            System.out.println(info.getBookingNumber() + "\t\t" + info.getEventType() + "\t\t" + info.getEventDate() + "\t" + info.getEventTime() + "\t\t" + info.getConfirmationDate() + " \t\t" + info.getFoodID() + "\t\t" + info.getVenueID() + "\t\t" + info.getDecorationID() + "\t\t" + info.getTotalAdults() + "\t\t" + info.getTotalKids() + "\t\t" + info.getTotalPrice()+ "\t\t" + info.getCustomerId());
-        }
+        return events;
     }
 
     //For each of the different files --> Customer.txt, Event.txt, Venue.txt, Menu.txt, Decoration.txt
