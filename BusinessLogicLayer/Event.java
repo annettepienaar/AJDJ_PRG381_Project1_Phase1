@@ -5,13 +5,13 @@ public class Event {
     //Keeping track of all events that have been registered to date
 
     //Fields
-    String bookingNumber, eventType, eventDate, eventTime, confirmationDate, foodID, venueID, decorationID;
+    String bookingNumber, eventType, eventDate, eventTime, confirmationDate, foodID, venueID, decorationID, customerId;
     int totalAdults, totalKids;
     float totalPrice;
 
     //Constructor
     public Event(String bookingNumber, String eventType, String eventDate, String eventTime, String confirmationDate,
-            String foodID, String venueID, String decorationID, int totalAdults, int totalKids, float totalPrice) {
+            String foodID, String venueID, String decorationID, int totalAdults, int totalKids, float totalPrice, String customerId) {
         this.bookingNumber = bookingNumber;
         this.eventType = eventType;
         this.eventDate = eventDate;
@@ -23,6 +23,7 @@ public class Event {
         this.totalAdults = totalAdults;
         this.totalKids = totalKids;
         this.totalPrice = totalPrice;
+        this.customerId = customerId;
     }
 
     //Getters and Setters
@@ -112,6 +113,14 @@ public class Event {
 
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     //Methods

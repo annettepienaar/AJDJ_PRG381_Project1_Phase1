@@ -34,7 +34,7 @@ public class OwnerMenu {
                     //Code for viewing all bookings
 
                     DataAccess obj = new DataAccess();
-                    System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price");
+                    System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price\tCustomer Id");
                     obj.getEventInfo();
                     break;
     
