@@ -7,7 +7,9 @@ import BusinessLogicLayer.Decoration;
 import BusinessLogicLayer.Event;
 import BusinessLogicLayer.Menu;
 import BusinessLogicLayer.Venue;
+import BusinessLogicLayer.Customer;
 import DataAccessLayer.*;
+import jdk.nashorn.api.tree.WhileLoopTree;
 
 public class CustomerMenu {
     enum MyMenu {
@@ -34,7 +36,8 @@ public class CustomerMenu {
         allVenues = myAccess.getVenueInfo();
         List<Decoration> allDecorations = new ArrayList<Decoration>();
         allDecorations = myAccess.getDecorationInfo();
-
+        List<Customer> allCustomers = new ArrayList<Customer>();
+        allCustomers = myAccess.getCustomerInfo();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -51,6 +54,18 @@ public class CustomerMenu {
                     System.out.println("Enter your customerID");
                     cusID = scanner.next();
 
+                    boolean customerChk = false;
+                    while (customerChk == false) {
+                        for (Customer customer : allCustomers) {
+                            if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
+                                customerChk = true;
+                            }
+                        }
+                        System.out.println("Please enter valid customer ID");
+                        cusID = scanner.next();
+                    }
+
+
                     System.out.println("Enter event type: Wedding or Birthday");
                     String eventType = scanner.next();
                     while(!eventType.equalsIgnoreCase("Wedding")||!eventType.equalsIgnoreCase("Birthday")){
@@ -64,20 +79,14 @@ public class CustomerMenu {
                     System.out.println("Enter event time 24hr format: hh:mm");
                     String eventTime = scanner.next();
 
-                    //Insert menu Menu Print function here.
-                    List<String> menuIDList = new ArrayList<String>();
-                    
-                    for (Menu menuItem: allMenuItems) {
-                        menuIDList.add(menuItem.getFoodID());
-                    }
-
+                    //Insert menu print function here.
                     System.out.println("Enter menu ID from selection above");
                     String menuInput = scanner.next();
 
                     boolean menuChk = false;
-                    while (menuChk== false) {
-                        for (String string : menuIDList) {
-                            if (string.equalsIgnoreCase(menuInput)) {
+                    while (menuChk == false) {
+                        for (Menu menuItem : allMenuItems ) {
+                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
                                 menuChk = true;
                             }
                         }
@@ -85,10 +94,39 @@ public class CustomerMenu {
                         menuInput = scanner.next();
                     }
 
+                    //insert venue print function here
                     System.out.println("Enter venue ID from selection above");
-                    System.out.println();
+                    String venueInput = scanner.next();
+
+                    boolean venueChk = false;
+                    while (venueChk == false) {
+                        for (Venue venueItem : allVenues) {
+                            if(venueItem.getVenueID().equalsIgnoreCase(venueInput)){
+                                venueChk = true;
+                            }
+                        }
+                        System.out.println("Please choose a valid venue code");
+                        venueInput = scanner.next();
+                    }
+
+                    //insert decoration print function
+                    System.out.println("Enter decoration from selection above");
+                    String decorInput = scanner.next();
+
+                    boolean decorChk = false;
+                    while (decorChk == false) {
+                        for (Decoration decorItem : allDecorations) {
+                            if (decorItem.getDecorationID().equalsIgnoreCase(decorInput)) {
+                                decorChk = true;
+                            }
+                        }                       
+                        System.out.println("Please choose a valid decoration code");
+                        decorInput = scanner.next();
+                    }
                     System.out.println("Enter total amount of adults");
+                    int totalAdults = scanner.nextInt();
                     System.out.println("Enter total amount of kids");
+                    int totalChild = scanner.nextInt();
 
                     break;
     
