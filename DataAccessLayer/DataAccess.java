@@ -68,7 +68,7 @@ public class DataAccess {
         List<Customer> customers = new ArrayList<Customer>();
 
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathCustomer);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -93,7 +93,7 @@ public class DataAccess {
         List<Decoration> decorations = new ArrayList<Decoration>();
         
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathDecoration);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -118,7 +118,7 @@ public class DataAccess {
         List<Menu> menus = new ArrayList<Menu>();
         
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathMenu);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -143,7 +143,7 @@ public class DataAccess {
         List<Venue> venues = new ArrayList<Venue>();
 
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathVenue);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
