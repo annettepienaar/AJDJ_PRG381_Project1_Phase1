@@ -1,12 +1,7 @@
 package PresentationLayer;
-
 import java.util.Scanner;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
-
 import java.util.List;
 import java.util.ArrayList;
-
 import BusinessLogicLayer.Event;
 import DataAccessLayer.*;
 
@@ -25,6 +20,11 @@ public class CustomerMenu {
         System.out.println("2. Update Menu");
         System.out.println("3. Exit");
         
+        DataAccess myAccess = new DataAccess();
+        //Creation and initialization of event lists
+        List<Event> allEvents = new ArrayList<Event>();
+        allEvents = myAccess.getEventInfo();
+
         Scanner scanner = new Scanner(System.in);
 
         int option = scanner.nextInt();
@@ -36,17 +36,25 @@ public class CustomerMenu {
 
             switch (menu) {
                 case New:
-                    //Code for making a new booking
+                    //Code for customer to make new booking
+                    System.out.println("Enter your customerID");
+                    cusID = scanner.next();
+
+                    System.out.println("Enter event type: Wedding or Birthday");
+                    String eventType = scanner.next();
+                    System.out.println("Enter event date in format dd/mm/yyyy");
+                    System.out.println("Enter event time 24hr format: hh:mm");
+                    System.out.println("Enter menu ID from selection above");
+                    System.out.println("Enter venue ID from selection above");
+                    System.out.println("Enter total amount of adults");
+                    System.out.println("Enter total amount of kids");
+
                     break;
     
                 case View:
+                    //Code to show a customers bookings
                     System.out.println("Enter your customerID: ");
                     cusID = scanner.next();
-
-                    DataAccess myAccess = new DataAccess();
-
-                    List<Event> allEvents = new ArrayList<Event>();
-                    allEvents = myAccess.getEventInfo();
 
                     List<Event> selectedEvents = new ArrayList<Event>();
 
@@ -69,7 +77,7 @@ public class CustomerMenu {
                     System.out.println("Enter your booking Number: ");
                     bookingNum = scanner.nextLine();
     
-                    //Code for fetching and editing menu of event
+                    //Code for fetching and editing menu of event and confirming booking
                     break;
             
                 default:
