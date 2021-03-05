@@ -48,6 +48,9 @@ public class CustomerMenu {
             switch (menu) {
                 case New:
                     //Code for customer to make new booking
+
+                    float totalPrice = 0;
+
                     System.out.println("Enter your customerID");
                     cusID = scanner.next();
 
@@ -76,8 +79,8 @@ public class CustomerMenu {
 
                     boolean menuChk = false;
                     while (menuChk== false) {
-                        for (String string : menuIDList) {
-                            if (string.equalsIgnoreCase(menuInput)) {
+                        for (String menuID : menuIDList) {
+                            if (menuID.equalsIgnoreCase(menuInput)) {
                                 menuChk = true;
                             }
                         }
@@ -108,7 +111,7 @@ public class CustomerMenu {
                     System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price\tCustomer Id");
 
                     for (Event selcEvent : selectedEvents) {
-                        System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.getTotalPrice()+ "\t\t" + selcEvent.getCustomerId());
+                        System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.CalculateFinalPrice()+ "\t\t" + selcEvent.getCustomerId());
                     }
 
                     //Code for fetching event info with mathing booking number
