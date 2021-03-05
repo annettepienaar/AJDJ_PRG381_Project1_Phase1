@@ -12,6 +12,7 @@ public class OwnerMenu {
         ViewAll,
         Confirmed,
         NonConfirmed,
+        DeleteBooking,
         Exit;
     }
 
@@ -54,6 +55,12 @@ public class OwnerMenu {
                     //Code for viewing all non-confirmed bookings
                     break;
 
+                case DeleteBooking:
+
+
+                
+                    break;
+
                 case Exit:
                     System.out.println("Exit program...");
                     break;
@@ -64,8 +71,8 @@ public class OwnerMenu {
             }
 
             System.out.println("0. View All Bookings");
-            System.out.println("2. View all Confirmed Bookings");
-            System.out.println("1. View all Non-Confirmed Bookings");
+            System.out.println("1. View all Confirmed Bookings");
+            System.out.println("2. View all Non-Confirmed Bookings");
             System.out.println("3. Exit");
 
             option = scanner.nextInt();
