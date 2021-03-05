@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 import BusinessLogicLayer.Customer;
 import BusinessLogicLayer.Decoration;
@@ -161,5 +164,25 @@ public class DataAccess {
         }
 
         return venues;
+    }
+
+    public void AddCustomer(String name, String surname, String phone, String email, String address, String idNumber) {
+        try {        
+            FileWriter fileWriter = new FileWriter(fPathCustomer, true);
+
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            PrintWriter printWriter = new PrintWriter(bufferedWriter); //Appends to new line
+
+            printWriter.write(name + ";" + surname + ";" + phone + ";" + email + ";" + address + ";" + idNumber);
+
+            fileWriter.close();
+            bufferedWriter.close();
+            printWriter.close();
+
+            System.out.println("Customer added!");
+        } catch(IOException e){
+            System.out.println("Error: " + e.toString());
+        }
     }
 }
