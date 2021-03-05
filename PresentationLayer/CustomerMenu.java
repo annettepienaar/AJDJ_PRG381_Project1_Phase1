@@ -2,7 +2,11 @@ package PresentationLayer;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+
+import BusinessLogicLayer.Decoration;
 import BusinessLogicLayer.Event;
+import BusinessLogicLayer.Menu;
+import BusinessLogicLayer.Venue;
 import DataAccessLayer.*;
 
 public class CustomerMenu {
@@ -24,6 +28,13 @@ public class CustomerMenu {
         //Creation and initialization of event lists
         List<Event> allEvents = new ArrayList<Event>();
         allEvents = myAccess.getEventInfo();
+        List<Menu> allMenuItems = new ArrayList<Menu>();
+        allMenuItems = myAccess.getMenuInfo();
+        List<Venue> allVenues = new ArrayList<Venue>();
+        allVenues = myAccess.getVenueInfo();
+        List<Decoration> allDecorations = new ArrayList<Decoration>();
+        allDecorations = myAccess.getDecorationInfo();
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -42,10 +53,40 @@ public class CustomerMenu {
 
                     System.out.println("Enter event type: Wedding or Birthday");
                     String eventType = scanner.next();
+                    while(!eventType.equalsIgnoreCase("Wedding")||!eventType.equalsIgnoreCase("Birthday")){
+                        System.out.println("Please choose Wedding or Birthday...");
+                        eventType = scanner.next();
+                    }
+
                     System.out.println("Enter event date in format dd/mm/yyyy");
+                    String eventDate = scanner.next();
+
                     System.out.println("Enter event time 24hr format: hh:mm");
+                    String eventTime = scanner.next();
+
+                    //Insert menu Menu Print function here.
+                    List<String> menuIDList = new ArrayList<String>();
+                    
+                    for (Menu menuItem: allMenuItems) {
+                        menuIDList.add(menuItem.getFoodID());
+                    }
+
                     System.out.println("Enter menu ID from selection above");
+                    String menuInput = scanner.next();
+
+                    boolean menuChk = false;
+                    while (menuChk== false) {
+                        for (String string : menuIDList) {
+                            if (string.equalsIgnoreCase(menuInput)) {
+                                menuChk = true;
+                            }
+                        }
+                        System.out.println("Please choose a valid menu code");
+                        menuInput = scanner.next();
+                    }
+
                     System.out.println("Enter venue ID from selection above");
+                    System.out.println();
                     System.out.println("Enter total amount of adults");
                     System.out.println("Enter total amount of kids");
 
