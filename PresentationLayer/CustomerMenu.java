@@ -9,7 +9,6 @@ import BusinessLogicLayer.Menu;
 import BusinessLogicLayer.Venue;
 import BusinessLogicLayer.Customer;
 import DataAccessLayer.*;
-import jdk.nashorn.api.tree.WhileLoopTree;
 
 public class CustomerMenu {
     enum MyMenu {
@@ -51,19 +50,24 @@ public class CustomerMenu {
             switch (menu) {
                 case New:
                     //Code for customer to make new booking
-                    System.out.println("Enter your customerID");
-                    cusID = scanner.next();
-
+                    cusID = scanner.nextLine();
                     boolean customerChk = false;
                     while (customerChk == false) {
                         for (Customer customer : allCustomers) {
-                            if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
+                            if (!customer.getIdNumber().equalsIgnoreCase(cusID)) {
+                                System.out.println("Please enter valid customer ID");
+                                cusID = scanner.next();
+                            }
+                            else{
+                                
                                 customerChk = true;
                             }
                         }
-                        System.out.println("Please enter valid customer ID");
-                        cusID = scanner.next();
                     }
+                    //generates auto booking number
+                    String bookingNumAuto = "";
+                    int lastBookingNum = Integer.parseInt(allEvents.get(allEvents.size()-1).getBookingNumber());
+                    System.out.println(lastBookingNum);
 
 
                     System.out.println("Enter event type: Wedding or Birthday");
