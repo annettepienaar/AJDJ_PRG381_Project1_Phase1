@@ -172,7 +172,7 @@ public class DataAccess {
 
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            PrintWriter printWriter = new PrintWriter(bufferedWriter); //Appends to new line
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
             printWriter.write(name + ";" + surname + ";" + phone + ";" + email + ";" + address + ";" + idNumber);
 
