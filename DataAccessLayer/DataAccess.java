@@ -25,6 +25,7 @@ public class DataAccess {
 
     public List<Event> getEventInfo() {
         List<Event> events = new ArrayList<Event>();
+        
         try {
             Scanner myReader = new Scanner(fPathEvent);
 
@@ -70,8 +71,9 @@ public class DataAccess {
 
     //For each of the different files --> Customer.txt, Event.txt, Venue.txt, Menu.txt, Decoration.txt
     //Customer.txt
-    public void getCustomerInfo() {
+    public List<Customer> getCustomerInfo() {
         List<Customer> customers = new ArrayList<Customer>();
+
         try {
             Scanner myReader = new Scanner(fPathEvent);
 
@@ -90,14 +92,13 @@ public class DataAccess {
             e.printStackTrace();
         }
 
-        for (Customer info : customers) {
-            System.out.println(info.getName() + "\t\t" + info.getSurname() + "\t\t" + info.getPhoneNumber() + "\t" + info.getEmail() + "\t\t" + info.getAddress() + " \t\t" + info.getIdNumber());
-        }
+        return customers;
     }
 
     //Decoration.txt
-    public void getDecorationInfo() {
+    public List<Decoration> getDecorationInfo() {
         List<Decoration> decorations = new ArrayList<Decoration>();
+        
         try {
             Scanner myReader = new Scanner(fPathEvent);
 
@@ -116,14 +117,13 @@ public class DataAccess {
             e.printStackTrace();
         }
 
-        for (Decoration info : decorations) {
-            System.out.println(info.getDecorationID() + "\t\t" + info.getName() + "\t\t" + info.getPrice());
-        }
+        return decorations;
     }
 
     //Menu.txt
-    public void getMenuInfo() {
+    public List<Menu> getMenuInfo() {
         List<Menu> menus = new ArrayList<Menu>();
+        
         try {
             Scanner myReader = new Scanner(fPathEvent);
 
@@ -142,14 +142,13 @@ public class DataAccess {
             e.printStackTrace();
         }
 
-        for (Menu info : menus) {
-            System.out.println(info.getFoodID() + "\t\t" + info.getName() + "\t\t" + info.getNormalPrice()+ "\t\t" + info.getChildPrice());
-        }
+        return menus;
     }
 
     //Venue.txt
-    public void getVenueInfo() {
+    public List<Venue> getVenueInfo() {
         List<Venue> venues = new ArrayList<Venue>();
+
         try {
             Scanner myReader = new Scanner(fPathEvent);
 
@@ -168,8 +167,6 @@ public class DataAccess {
             e.printStackTrace();
         }
 
-        for (Venue info : venues) {
-            System.out.println(info.getVenueID() + "\t\t" + info.getVenueName() + "\t\t" + info.getVenueAddress()+ "\t\t" + info.getVenuePhoneNumber());
-        }
+        return venues;
     }
 }
