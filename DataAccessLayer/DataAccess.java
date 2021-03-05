@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.*;
+=======
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+>>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
 
 import BusinessLogicLayer.Customer;
 import BusinessLogicLayer.Decoration;
@@ -75,7 +81,7 @@ public class DataAccess {
         List<Customer> customers = new ArrayList<Customer>();
 
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathCustomer);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -100,7 +106,7 @@ public class DataAccess {
         List<Decoration> decorations = new ArrayList<Decoration>();
         
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathDecoration);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -125,7 +131,7 @@ public class DataAccess {
         List<Menu> menus = new ArrayList<Menu>();
         
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathMenu);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -150,7 +156,7 @@ public class DataAccess {
         List<Venue> venues = new ArrayList<Venue>();
 
         try {
-            Scanner myReader = new Scanner(fPathEvent);
+            Scanner myReader = new Scanner(fPathVenue);
 
             while (myReader.hasNextLine()) {
               String currentLine = myReader.nextLine();
@@ -168,5 +174,25 @@ public class DataAccess {
         }
 
         return venues;
+    }
+
+    public void AddCustomer(String name, String surname, String phone, String email, String address, String idNumber) {
+        try {        
+            FileWriter fileWriter = new FileWriter(fPathCustomer, true);
+
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+
+            printWriter.write(name + ";" + surname + ";" + phone + ";" + email + ";" + address + ";" + idNumber);
+
+            fileWriter.close();
+            bufferedWriter.close();
+            printWriter.close();
+
+            System.out.println("Customer added!");
+        } catch(IOException e){
+            System.out.println("Error: " + e.toString());
+        }
     }
 }

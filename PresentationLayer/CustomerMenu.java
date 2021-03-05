@@ -1,5 +1,6 @@
 package PresentationLayer;
 import java.util.Scanner;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -7,11 +8,13 @@ import BusinessLogicLayer.Decoration;
 import BusinessLogicLayer.Event;
 import BusinessLogicLayer.Menu;
 import BusinessLogicLayer.Venue;
+import BusinessLogicLayer.Customer;
 import DataAccessLayer.*;
 
 public class CustomerMenu {
     enum MyMenu {
-        New,
+        NewBook,
+        NewCus,
         View,
         Update,
         Exit;
@@ -20,9 +23,10 @@ public class CustomerMenu {
     public void showMenu()
     {
         System.out.println("0. New Booking");
-        System.out.println("1. View Booking");
-        System.out.println("2. Update Menu");
-        System.out.println("3. Exit");
+        System.out.println("1. New Customer");
+        System.out.println("2. View Booking");
+        System.out.println("3. Update Menu");
+        System.out.println("4. Exit");
         
         DataAccess myAccess = new DataAccess();
         //Creation and initialization of event lists
@@ -34,7 +38,8 @@ public class CustomerMenu {
         allVenues = myAccess.getVenueInfo();
         List<Decoration> allDecorations = new ArrayList<Decoration>();
         allDecorations = myAccess.getDecorationInfo();
-
+        List<Customer> allCustomers = new ArrayList<Customer>();
+        allCustomers = myAccess.getCustomerInfo();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -42,17 +47,41 @@ public class CustomerMenu {
 
         String bookingNum, cusID;
         
-        while (option != 3) {
+        while (option != 4) {
             MyMenu menu = MyMenu.values()[option];
 
             switch (menu) {
-                case New:
+                case NewBook:
                     //Code for customer to make new booking
+<<<<<<< HEAD
 
                     float totalPrice = 0;
 
                     System.out.println("Enter your customerID");
+=======
+                    System.out.println("Please enter customer ID");
+>>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
                     cusID = scanner.next();
+
+                    boolean customerChk = false;
+                    while (customerChk == false) {
+                        for (Customer customer : allCustomers) {
+                            System.out.println(customer.getIdNumber());
+                            /*if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
+                                customerChk = true;
+                            }
+                            else{
+                                System.out.println("Please enter valid customer ID");
+                                cusID = scanner.next();
+                            }*/
+                        }
+                        customerChk = true;
+                    }
+                    //generates auto booking number
+                    String bookingNumAuto = "";
+                    int lastBookingNum = Integer.parseInt(allEvents.get(allEvents.size()-1).getBookingNumber());
+                    System.out.println(lastBookingNum);
+
 
                     System.out.println("Enter event type: Wedding or Birthday");
                     String eventType = scanner.next();
@@ -67,20 +96,20 @@ public class CustomerMenu {
                     System.out.println("Enter event time 24hr format: hh:mm");
                     String eventTime = scanner.next();
 
-                    //Insert menu Menu Print function here.
-                    List<String> menuIDList = new ArrayList<String>();
-                    
-                    for (Menu menuItem: allMenuItems) {
-                        menuIDList.add(menuItem.getFoodID());
-                    }
-
+                    //Insert menu print function here.
                     System.out.println("Enter menu ID from selection above");
                     String menuInput = scanner.next();
 
                     boolean menuChk = false;
+<<<<<<< HEAD
                     while (menuChk== false) {
                         for (String menuID : menuIDList) {
                             if (menuID.equalsIgnoreCase(menuInput)) {
+=======
+                    while (menuChk == false) {
+                        for (Menu menuItem : allMenuItems ) {
+                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
+>>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
                                 menuChk = true;
                             }
                         }
@@ -88,11 +117,64 @@ public class CustomerMenu {
                         menuInput = scanner.next();
                     }
 
+                    //insert venue print function here
                     System.out.println("Enter venue ID from selection above");
-                    System.out.println();
-                    System.out.println("Enter total amount of adults");
-                    System.out.println("Enter total amount of kids");
+                    String venueInput = scanner.next();
 
+                    boolean venueChk = false;
+                    while (venueChk == false) {
+                        for (Venue venueItem : allVenues) {
+                            if(venueItem.getVenueID().equalsIgnoreCase(venueInput)){
+                                venueChk = true;
+                            }
+                        }
+                        System.out.println("Please choose a valid venue code");
+                        venueInput = scanner.next();
+                    }
+
+                    //insert decoration print function
+                    System.out.println("Enter decoration from selection above");
+                    String decorInput = scanner.next();
+
+                    boolean decorChk = false;
+                    while (decorChk == false) {
+                        for (Decoration decorItem : allDecorations) {
+                            if (decorItem.getDecorationID().equalsIgnoreCase(decorInput)) {
+                                decorChk = true;
+                            }
+                        }                       
+                        System.out.println("Please choose a valid decoration code");
+                        decorInput = scanner.next();
+                    }
+                    System.out.println("Enter total amount of adults");
+                    int totalAdults = scanner.nextInt();
+                    System.out.println("Enter total amount of kids");
+                    int totalChild = scanner.nextInt();
+
+                    break;
+
+                case NewCus:
+                    Scanner myScanner = new Scanner(System.in);
+
+                    System.out.println("Enter your name: ");
+                    String cusName = myScanner.next();
+
+                    System.out.println("Enter your surname: ");
+                    String cusSur = myScanner.next();
+
+                    System.out.println("Enter your phone number: "); 
+                    String cusPhone = myScanner.next();
+
+                    System.out.println("Enter your email address: ");
+                    String cusEmail = myScanner.next();
+
+                    System.out.println("Enter your address: ");
+                    String cusAddress = myScanner.next();
+
+                    System.out.println("Enter your customer ID: ");
+                    String cusIDNum = myScanner.next();
+
+                    myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDNum);
                     break;
     
                 case View:
@@ -129,9 +211,10 @@ public class CustomerMenu {
             }
 
             System.out.println("0. New Booking");
-            System.out.println("1. View Booking");
-            System.out.println("2. Update Menu");
-            System.out.println("3. Exit");
+            System.out.println("1. New Customer");
+            System.out.println("2. View Booking");
+            System.out.println("3. Update Menu");
+            System.out.println("4. Exit");
 
             option = scanner.nextInt();
         }
