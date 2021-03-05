@@ -174,13 +174,33 @@ public class DataAccess {
 
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
-            printWriter.write(name + ";" + surname + ";" + phone + ";" + email + ";" + address + ";" + idNumber);
+            printWriter.write(name + ";" + surname + ";" + phone + ";" + email + ";" + address + ";" + idNumber+"\r");
 
-            fileWriter.close();
             bufferedWriter.close();
             printWriter.close();
-
+            fileWriter.close();
             System.out.println("Customer added!");
+        } catch(IOException e){
+            System.out.println("Error: " + e.toString());
+        }
+    }
+    public void AddEvent(String bookingNumber,String eventType,String eventDate,String eventTime,String confirmationDate,String foodID,String venueID,
+        String decorationID, int totalAdults, int totalKids, float totalprice, String customerID) {
+
+        try {        
+            FileWriter fileWriter = new FileWriter(fPathEvent, true);
+
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+
+            printWriter.write(bookingNumber + ";" + eventType + ";" + eventDate + ";" + eventTime + ";" + confirmationDate + ";" + foodID + ";" + venueID + ";" + 
+                decorationID + ";" + totalAdults + ";" + totalKids + ";" + totalprice + ";" + customerID);
+
+            bufferedWriter.close();
+            printWriter.close();
+            fileWriter.close();
+            System.out.println("Your booking number is: " + bookingNumber);
         } catch(IOException e){
             System.out.println("Error: " + e.toString());
         }

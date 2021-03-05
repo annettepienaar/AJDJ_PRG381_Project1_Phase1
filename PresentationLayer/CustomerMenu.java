@@ -53,34 +53,44 @@ public class CustomerMenu {
             switch (menu) {
                 case NewBook:
                     //Code for customer to make new booking
-                    System.out.println("Please enter customer ID");
-                    cusID = scanner.next();
+                    
 
                     boolean customerChk = false;
                     while (customerChk == false) {
+                        System.out.println("Please enter customer ID");
+                        cusID = scanner.next();
                         for (Customer customer : allCustomers) {
-                            System.out.println(customer.getIdNumber());
-                            /*if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
+                            if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
                                 customerChk = true;
                             }
-                            else{
-                                System.out.println("Please enter valid customer ID");
-                                cusID = scanner.next();
-                            }*/
                         }
-                        customerChk = true;
                     }
+
                     //generates auto booking number
                     String bookingNumAuto = "";
                     int lastBookingNum = Integer.parseInt(allEvents.get(allEvents.size()-1).getBookingNumber());
-                    System.out.println(lastBookingNum);
-
-
-                    System.out.println("Enter event type: Wedding or Birthday");
-                    String eventType = scanner.next();
-                    while(!eventType.equalsIgnoreCase("Wedding")||!eventType.equalsIgnoreCase("Birthday")){
-                        System.out.println("Please choose Wedding or Birthday...");
+                    if (lastBookingNum<10) {
+                        lastBookingNum++;
+                        bookingNumAuto = "00" + lastBookingNum;
+                    }
+                    else if(lastBookingNum < 100){
+                        lastBookingNum++;
+                        bookingNumAuto = "0" + lastBookingNum;
+                    }
+                    else{
+                        lastBookingNum++;
+                        bookingNumAuto ="" + lastBookingNum;
+                    }
+                    String eventType;
+                    boolean eventTypeChk = false;
+                    while(eventTypeChk == false){
+                        System.out.println("Enter event type: Wedding or Birthday");
                         eventType = scanner.next();
+                        for (Event event : allEvents) {
+                            if (event.getEventType().equalsIgnoreCase(eventType)) {
+                                eventTypeChk = true;
+                            }
+                        }
                     }
 
                     System.out.println("Enter event date in format dd/mm/yyyy");
@@ -90,53 +100,51 @@ public class CustomerMenu {
                     String eventTime = scanner.next();
 
                     //Insert menu print function here.
-                    System.out.println("Enter menu ID from selection above");
-                    String menuInput = scanner.next();
-
+                    String menuInput;
                     boolean menuChk = false;
                     while (menuChk == false) {
+                        System.out.println("Enter menu ID from selection above");
+                        menuInput = scanner.next();
                         for (Menu menuItem : allMenuItems ) {
                             if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
                                 menuChk = true;
                             }
                         }
-                        System.out.println("Please choose a valid menu code");
-                        menuInput = scanner.next();
                     }
 
                     //insert venue print function here
-                    System.out.println("Enter venue ID from selection above");
-                    String venueInput = scanner.next();
-
+                    String venueInput;
                     boolean venueChk = false;
                     while (venueChk == false) {
+                        System.out.println("Enter venue ID from selection above");
+                        venueInput = scanner.next();
                         for (Venue venueItem : allVenues) {
                             if(venueItem.getVenueID().equalsIgnoreCase(venueInput)){
                                 venueChk = true;
                             }
                         }
-                        System.out.println("Please choose a valid venue code");
-                        venueInput = scanner.next();
                     }
 
                     //insert decoration print function
-                    System.out.println("Enter decoration from selection above");
-                    String decorInput = scanner.next();
-
+                    String decorInput;
                     boolean decorChk = false;
                     while (decorChk == false) {
+                        System.out.println("Enter decoration from selection above");
+                        decorInput = scanner.next();
                         for (Decoration decorItem : allDecorations) {
                             if (decorItem.getDecorationID().equalsIgnoreCase(decorInput)) {
                                 decorChk = true;
                             }
                         }                       
-                        System.out.println("Please choose a valid decoration code");
-                        decorInput = scanner.next();
                     }
                     System.out.println("Enter total amount of adults");
                     int totalAdults = scanner.nextInt();
                     System.out.println("Enter total amount of kids");
                     int totalChild = scanner.nextInt();
+
+                    String confirmationDate = "";
+
+                    myAccess.AddEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild, totalprice, customerID);
 
                     break;
 
@@ -144,24 +152,40 @@ public class CustomerMenu {
                     Scanner myScanner = new Scanner(System.in);
 
                     System.out.println("Enter your name: ");
-                    String cusName = myScanner.next();
+                    String cusName = myScanner.nextLine();
 
                     System.out.println("Enter your surname: ");
-                    String cusSur = myScanner.next();
+                    String cusSur = myScanner.nextLine();
 
                     System.out.println("Enter your phone number: "); 
-                    String cusPhone = myScanner.next();
+                    String cusPhone = myScanner.nextLine();
 
                     System.out.println("Enter your email address: ");
-                    String cusEmail = myScanner.next();
+                    String cusEmail = myScanner.nextLine();
 
                     System.out.println("Enter your address: ");
-                    String cusAddress = myScanner.next();
+                    String cusAddress = myScanner.nextLine();
 
-                    System.out.println("Enter your customer ID: ");
-                    String cusIDNum = myScanner.next();
+                    String cusIDAuto = "";
+                    int lastCusID = Integer.parseInt(allCustomers.get(allCustomers.size()-1).getIdNumber());
+                    if (lastCusID<10) {
+                        lastCusID++;
+                        cusIDAuto = "000" + lastCusID;
+                    }
+                    else if (lastCusID<100) {
+                        lastCusID++;
+                        cusIDAuto = "00" + lastCusID;
+                    }
+                    else if (lastCusID<1000) {
+                        lastCusID++;
+                        cusIDAuto = "0" + lastCusID;
+                    }
+                    else {
+                        lastCusID++;
+                        cusIDAuto = "" + lastCusID;;
+                    }
 
-                    myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDNum);
+                    myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDAuto);
                     break;
     
                 case View:
