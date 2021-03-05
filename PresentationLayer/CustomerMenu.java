@@ -23,7 +23,7 @@ public class CustomerMenu {
     public void showMenu()
     {
         System.out.println("0. New Booking");
-        System.out.println("1. New Booking");
+        System.out.println("1. New Customer");
         System.out.println("2. View Booking");
         System.out.println("3. Update Menu");
         System.out.println("4. Exit");
@@ -141,23 +141,25 @@ public class CustomerMenu {
                     break;
 
                 case NewCus:
+                    Scanner myScanner = new Scanner(System.in);
+
                     System.out.println("Enter your name: ");
-                    String cusName = scanner.next();
+                    String cusName = myScanner.next();
 
                     System.out.println("Enter your surname: ");
-                    String cusSur = scanner.next();
+                    String cusSur = myScanner.next();
 
                     System.out.println("Enter your phone number: "); 
-                    String cusPhone = scanner.next();
+                    String cusPhone = myScanner.next();
 
                     System.out.println("Enter your email address: ");
-                    String cusEmail = scanner.next();
+                    String cusEmail = myScanner.next();
 
                     System.out.println("Enter your address: ");
-                    String cusAddress = scanner.next();
+                    String cusAddress = myScanner.next();
 
                     System.out.println("Enter your customer ID: ");
-                    String cusIDNum = scanner.next();
+                    String cusIDNum = myScanner.next();
 
                     myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDNum);
                     break;
@@ -196,9 +198,10 @@ public class CustomerMenu {
             }
 
             System.out.println("0. New Booking");
-            System.out.println("1. View Booking");
-            System.out.println("2. Update Menu");
-            System.out.println("3. Exit");
+            System.out.println("1. New Customer");
+            System.out.println("2. View Booking");
+            System.out.println("3. Update Menu");
+            System.out.println("4. Exit");
 
             option = scanner.nextInt();
         }
