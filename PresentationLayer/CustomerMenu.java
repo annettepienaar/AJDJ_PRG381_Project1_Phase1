@@ -53,14 +53,12 @@ public class CustomerMenu {
             switch (menu) {
                 case NewBook:
                     //Code for customer to make new booking
-<<<<<<< HEAD
 
                     float totalPrice = 0;
 
                     System.out.println("Enter your customerID");
-=======
                     System.out.println("Please enter customer ID");
->>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
+
                     cusID = scanner.next();
 
                     boolean customerChk = false;
@@ -97,20 +95,18 @@ public class CustomerMenu {
                     String eventTime = scanner.next();
 
                     //Insert menu print function here.
-                    System.out.println("Enter menu ID from selection above");
+                    System.out.println("Enter menu ID from s election above");
                     String menuInput = scanner.next();
 
+                    float childPrice = 0, adultPrice = 0;
+
                     boolean menuChk = false;
-<<<<<<< HEAD
                     while (menuChk== false) {
-                        for (String menuID : menuIDList) {
-                            if (menuID.equalsIgnoreCase(menuInput)) {
-=======
-                    while (menuChk == false) {
-                        for (Menu menuItem : allMenuItems ) {
-                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
->>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
+                        for (Menu menuID : allMenuItems) {
+                            if (menuID.getFoodID().equalsIgnoreCase(menuInput)) {
                                 menuChk = true;
+                                childPrice = menuID.getChildPrice();
+                                adultPrice = menuID.getNormalPrice();
                             }
                         }
                         System.out.println("Please choose a valid menu code");
@@ -136,11 +132,14 @@ public class CustomerMenu {
                     System.out.println("Enter decoration from selection above");
                     String decorInput = scanner.next();
 
+                    float decoPrice = 0;
+
                     boolean decorChk = false;
                     while (decorChk == false) {
                         for (Decoration decorItem : allDecorations) {
                             if (decorItem.getDecorationID().equalsIgnoreCase(decorInput)) {
                                 decorChk = true;
+                                decoPrice = decorItem.getPrice();
                             }
                         }                       
                         System.out.println("Please choose a valid decoration code");
@@ -150,6 +149,8 @@ public class CustomerMenu {
                     int totalAdults = scanner.nextInt();
                     System.out.println("Enter total amount of kids");
                     int totalChild = scanner.nextInt();
+
+                    float totalPriceCalc = (float)(totalAdults * adultPrice) + (totalChild * childPrice) + decoPrice;
 
                     break;
 
