@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.io.*;
-=======
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.PrintWriter;
->>>>>>> cdc2e242782ec1045f8b32f502446d30743d82ac
 
 import BusinessLogicLayer.Customer;
 import BusinessLogicLayer.Decoration;
