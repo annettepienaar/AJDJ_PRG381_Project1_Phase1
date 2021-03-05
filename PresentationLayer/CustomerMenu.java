@@ -1,5 +1,6 @@
 package PresentationLayer;
 import java.util.Scanner;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,7 +12,8 @@ import DataAccessLayer.*;
 
 public class CustomerMenu {
     enum MyMenu {
-        New,
+        NewBook,
+        NewCus,
         View,
         Update,
         Exit;
@@ -20,9 +22,10 @@ public class CustomerMenu {
     public void showMenu()
     {
         System.out.println("0. New Booking");
-        System.out.println("1. View Booking");
-        System.out.println("2. Update Menu");
-        System.out.println("3. Exit");
+        System.out.println("1. New Booking");
+        System.out.println("2. View Booking");
+        System.out.println("3. Update Menu");
+        System.out.println("4. Exit");
         
         DataAccess myAccess = new DataAccess();
         //Creation and initialization of event lists
@@ -42,11 +45,11 @@ public class CustomerMenu {
 
         String bookingNum, cusID;
         
-        while (option != 3) {
+        while (option != 4) {
             MyMenu menu = MyMenu.values()[option];
 
             switch (menu) {
-                case New:
+                case NewBook:
                     //Code for customer to make new booking
                     System.out.println("Enter your customerID");
                     cusID = scanner.next();
@@ -90,6 +93,28 @@ public class CustomerMenu {
                     System.out.println("Enter total amount of adults");
                     System.out.println("Enter total amount of kids");
 
+                    break;
+
+                case NewCus:
+                    System.out.println("Enter your name: ");
+                    String cusName = scanner.next();
+
+                    System.out.println("Enter your surname: ");
+                    String cusSur = scanner.next();
+
+                    System.out.println("Enter your phone number: "); 
+                    String cusPhone = scanner.next();
+
+                    System.out.println("Enter your email address: ");
+                    String cusEmail = scanner.next();
+
+                    System.out.println("Enter your address: ");
+                    String cusAddress = scanner.next();
+
+                    System.out.println("Enter your customer ID: ");
+                    String cusIDNum = scanner.next();
+
+                    myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDNum);
                     break;
     
                 case View:
