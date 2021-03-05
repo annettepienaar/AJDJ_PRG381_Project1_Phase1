@@ -144,7 +144,7 @@ public class CustomerMenu {
 
                     String confirmationDate = "";
 
-                    myAccess.AddEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild, totalprice, customerID);
+                    myAccess.addEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild, totalprice, customerID);
 
                     break;
 
@@ -185,7 +185,7 @@ public class CustomerMenu {
                         cusIDAuto = "" + lastCusID;;
                     }
 
-                    myAccess.AddCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDAuto);
+                    myAccess.addCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDAuto);
                     break;
     
                 case View:
@@ -207,13 +207,38 @@ public class CustomerMenu {
                         System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.getTotalPrice()+ "\t\t" + selcEvent.getCustomerId());
                     }
 
-                    //Code for fetching event info with mathing booking number
+                    //Code for fetching event info with matching booking number
                     break;
     
                 case Update:
-                    System.out.println("Enter your booking Number: ");
-                    bookingNum = scanner.nextLine();
-    
+                    
+
+                    boolean updateChk = false;
+                    while (updateChk == false) {
+                        System.out.println("Enter your booking Number: ");
+                        bookingNum = scanner.nextLine();
+                        
+                    }
+                    //insert menu print function
+                    menuChk = false;
+                    while (menuChk == false) {
+                        System.out.println("Enter menu ID from selection above");
+                        menuInput = scanner.next();
+                        for (Menu menuItem : allMenuItems ) {
+                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
+                                menuChk = true;
+                            }
+                        }
+                    }
+                    for (Event event : allEvents) {
+                        if (event.getBookingNumber().equalsIgnoreCase(bookingNum)) {
+                            event.setFoodID(menuInput);
+                        }
+                    }
+
+                    myAccess.updateEvent(allEvents);
+                    
+
                     //Code for fetching and editing menu of event and confirming booking
                     break;
             

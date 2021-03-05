@@ -166,7 +166,7 @@ public class DataAccess {
         return venues;
     }
 
-    public void AddCustomer(String name, String surname, String phone, String email, String address, String idNumber) {
+    public void addCustomer(String name, String surname, String phone, String email, String address, String idNumber) {
         try {        
             FileWriter fileWriter = new FileWriter(fPathCustomer, true);
 
@@ -184,7 +184,29 @@ public class DataAccess {
             System.out.println("Error: " + e.toString());
         }
     }
-    public void AddEvent(String bookingNumber,String eventType,String eventDate,String eventTime,String confirmationDate,String foodID,String venueID,
+    public void updateEvent(List<Event> event) {
+
+        try {        
+            FileWriter fileWriter = new FileWriter(fPathEvent, true);
+
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            for (Event eventItem : event) {
+                printWriter.write(eventItem.getBookingNumber() + ";" + eventItem.getEventType() + ";" + eventItem.getEventDate() + ";" + eventItem.getEventTime() + ";" + eventItem.getConfirmationDate() + ";" + eventItem.getFoodID() + ";" + eventItem.getVenueID() + ";" + eventItem.getDecorationID() + ";" + eventItem.getTotalAdults() + ";" + eventItem.getTotalKids() + ";" + eventItem.getTotalPrice() + ";" + eventItem.getCustomerId());
+            }
+
+            
+
+            bufferedWriter.close();
+            printWriter.close();
+            fileWriter.close();
+            System.out.println("Entry updated");
+        } catch(IOException e){
+            System.out.println("Error: " + e.toString());
+        }
+    }
+    public void addEvent(String bookingNumber,String eventType,String eventDate,String eventTime,String confirmationDate,String foodID,String venueID,
         String decorationID, int totalAdults, int totalKids, float totalprice, String customerID) {
 
         try {        
