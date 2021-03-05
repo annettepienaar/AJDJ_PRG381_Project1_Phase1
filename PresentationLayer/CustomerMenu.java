@@ -53,19 +53,22 @@ public class CustomerMenu {
             switch (menu) {
                 case NewBook:
                     //Code for customer to make new booking
-                    cusID = scanner.nextLine();
+                    System.out.println("Please enter customer ID");
+                    cusID = scanner.next();
+
                     boolean customerChk = false;
                     while (customerChk == false) {
                         for (Customer customer : allCustomers) {
-                            if (!customer.getIdNumber().equalsIgnoreCase(cusID)) {
-                                System.out.println("Please enter valid customer ID");
-                                cusID = scanner.next();
-                            }
-                            else{
-                                
+                            System.out.println(customer.getIdNumber());
+                            /*if (customer.getIdNumber().equalsIgnoreCase(cusID)) {
                                 customerChk = true;
                             }
+                            else{
+                                System.out.println("Please enter valid customer ID");
+                                cusID = scanner.next();
+                            }*/
                         }
+                        customerChk = true;
                     }
                     //generates auto booking number
                     String bookingNumAuto = "";
