@@ -229,6 +229,11 @@ public class CustomerMenu {
                     while (updateChk == false) {
                         System.out.println("Enter your booking Number: ");
                         bookingNum = scanner.nextLine();
+                        for (Event event : allEvents) {
+                            if (event.getEventType().equalsIgnoreCase(bookingNum)) {
+                                updateChk = true;
+                            }
+                        }
                         
                     }
                     //insert menu print function
