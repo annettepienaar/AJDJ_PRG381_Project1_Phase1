@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import java.util.Scanner;
 import BusinessLogicLayer.Event;
+import BusinessLogicLayer.PrintFormatting;
 import DataAccessLayer.*;
 
 import java.io.IOException;
@@ -42,12 +43,7 @@ public class OwnerMenu {
             switch (menu) {
                 case ViewAll:
                     //Code for viewing all bookings                 
-                    System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price\tCustomer Id");
-
-                    for (Event info : ownEvent) {
-                        System.out.println(info.getBookingNumber() + "\t\t" + info.getEventType() + "\t\t" + info.getEventDate() + "\t" + info.getEventTime() + "\t\t" + info.getConfirmationDate() + " \t\t" + info.getFoodID() + "\t\t" + info.getVenueID() + "\t\t" + info.getDecorationID() + "\t\t" + info.getTotalAdults() + "\t\t" + info.getTotalKids() + "\t\t" + info.CalculateFinalPrice()+ "\t\t" + info.getCustomerId());
-                    }
-
+                    PrintFormatting.formatAllEvent(ownEvent);
                     break;
     
                 case Confirmed:

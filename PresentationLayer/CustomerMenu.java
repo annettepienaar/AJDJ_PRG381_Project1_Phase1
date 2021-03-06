@@ -9,6 +9,7 @@ import BusinessLogicLayer.Event;
 import BusinessLogicLayer.Menu;
 import BusinessLogicLayer.Venue;
 import BusinessLogicLayer.Customer;
+import BusinessLogicLayer.PrintFormatting;
 import DataAccessLayer.*;
 
 public class CustomerMenu {
@@ -213,11 +214,7 @@ public class CustomerMenu {
                         }                        
                     }
 
-                    System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price\tCustomer Id");
-
-                    for (Event selcEvent : selectedEvents) {
-                        System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.CalculateFinalPrice()+ "\t\t" + selcEvent.getCustomerId());
-                    }
+                    PrintFormatting.formatAllEvent(selectedEvents);
 
                     //Code for fetching event info with matching booking number
                     break;
