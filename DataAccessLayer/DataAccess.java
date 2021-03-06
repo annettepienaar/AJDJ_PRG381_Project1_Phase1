@@ -132,7 +132,7 @@ public class DataAccess {
 
               String[] words = currentLine.split(";"); 
               
-              menus.add(new Menu(words[0], words[1], Float.parseFloat(words[2]), Float.parseFloat(words[2])));
+              menus.add(new Menu(words[0], words[1], Float.parseFloat(words[2]), Float.parseFloat(words[3])));
             }
 
             myReader.close();
@@ -157,7 +157,7 @@ public class DataAccess {
 
               String[] words = currentLine.split(";"); 
               
-              venues.add(new Venue(words[0], words[1], words[2], words[2]));
+              venues.add(new Venue(words[0], words[1], words[2], words[3]));
             }
 
             myReader.close();

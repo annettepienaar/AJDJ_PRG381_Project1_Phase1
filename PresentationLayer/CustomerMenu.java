@@ -101,6 +101,7 @@ public class CustomerMenu {
                     String eventTime = scanner.next();
 
                     //Insert menu print function here.
+                    PrintFormatting.formatMenu(allMenuItems);
                     
                     String menuInput = "";
 
@@ -108,7 +109,7 @@ public class CustomerMenu {
 
                     boolean menuChk = false;
                     while (menuChk== false) {
-                        System.out.println("Enter menu ID from s election above");
+                        System.out.println("Enter menu ID from selection above");
                         menuInput = scanner.next();
                         for (Menu menuID : allMenuItems) {
                             if (menuID.getFoodID().equalsIgnoreCase(menuInput)) {
@@ -120,6 +121,7 @@ public class CustomerMenu {
                     }
 
                     //insert venue print function here
+                    PrintFormatting.formatVenue(allVenues);
                     String venueInput = "";
                     boolean venueChk = false;
                     while (venueChk == false) {
@@ -133,6 +135,7 @@ public class CustomerMenu {
                     }
 
                     //insert decoration print function
+                    PrintFormatting.formatDecoratoin(allDecorations);
                     String decorInput = "";
                     float decoPrice = 0;
 
