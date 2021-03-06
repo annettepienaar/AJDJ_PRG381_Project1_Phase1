@@ -1,2 +1,3 @@
-Johnny;Depp;073 555 1589;depp@yahoo.co.za;55 Hanston ave Dinalview;0001
-Jane;Bond;083 598 4458;007@hotmail.com;22 Reebok drive Sunward Park;0002
+Johnny;Depp;0735551589;depp@yahoo.co.za;55 Hanston ave Dinalview;0001
+Jane;Bond;0835984458;007@hotmail.com;22 Reebok drive Sunward Park;0002
+Sarah;Michalson;0235896655;sarah@yahoo.com;12 neverlane street;0003

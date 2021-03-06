@@ -222,8 +222,7 @@ public class CustomerMenu {
                     //Code for fetching event info with matching booking number
                     break;
     
-                case Update:
-                    
+                case Update:                   
                     String menuIn = "";
                     boolean updateChk = false;
                     while (updateChk == false) {
