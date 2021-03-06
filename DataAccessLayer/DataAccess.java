@@ -191,13 +191,13 @@ public class DataAccess {
     public void updateEvent(List<Event> event) {
 
         try {        
-            FileWriter fileWriter = new FileWriter(fPathEvent, true);
+            FileWriter fileWriter = new FileWriter(fPathEvent, false);
 
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
             for (Event eventItem : event) {
-                printWriter.write(eventItem.getBookingNumber() + ";" + eventItem.getEventType() + ";" + eventItem.getEventDate() + ";" + eventItem.getEventTime() + ";" + eventItem.getConfirmationDate() + ";" + eventItem.getFoodID() + ";" + eventItem.getVenueID() + ";" + eventItem.getDecorationID() + ";" + eventItem.getTotalAdults() + ";" + eventItem.getTotalKids() + ";" + eventItem.getTotalPrice() + ";" + eventItem.getCustomerId());
+                printWriter.write(eventItem.getBookingNumber() + ";" + eventItem.getEventType() + ";" + eventItem.getEventDate() + ";" + eventItem.getEventTime() + ";" + eventItem.getConfirmationDate() + ";" + eventItem.getFoodID() + ";" + eventItem.getVenueID() + ";" + eventItem.getDecorationID() + ";" + eventItem.getTotalAdults() + ";" + eventItem.getTotalKids() + ";" + eventItem.getTotalPrice() + ";" + eventItem.getCustomerId() + "\n");
             }
 
             

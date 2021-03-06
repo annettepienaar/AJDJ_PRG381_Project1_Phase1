@@ -2,9 +2,11 @@ package PresentationLayer;
 import java.util.Scanner;
 
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import BusinessLogicLayer.Decoration;
+import BusinessLogicLayer.Email;
 import BusinessLogicLayer.Event;
 import BusinessLogicLayer.Menu;
 import BusinessLogicLayer.Venue;
@@ -226,17 +228,31 @@ public class CustomerMenu {
                 //This should be functional code now                   
                     String menuIn = "";
                     boolean updateChk = false;
+
+                    //String to store the customers infromation for emails
+                    String address = "", name = ""; 
+
                     while (updateChk == false) {
                         System.out.println("Enter your booking Number: ");
                         bookingNum = scanner.nextLine();
                         for (Event event : allEvents) {
-                            if (event.getEventType().equalsIgnoreCase(bookingNum)) {
+                            if (event.getBookingNumber().equalsIgnoreCase(bookingNum)) {
                                 updateChk = true;
+
+                                for(Customer cus: allCustomers){
+                                    if(cus.getIdNumber().equalsIgnoreCase(event.getCustomerId())){
+                                        address = cus.getEmail();
+                                        name = cus.getName();
+                                        break;
+                                    }
+                                }
+
                             }
                         }
                         
                     }
                     //insert menu print function
+                    PrintFormatting.formatMenu(allMenuItems); //Mine~ Janco Enslin (3/6/2021 9:49)!
                     menuChk = false;
                     while (menuChk == false) {
                         System.out.println("Enter menu ID from selection above");
@@ -255,7 +271,11 @@ public class CustomerMenu {
 
                     myAccess.updateEvent(allEvents);
                     
-
+                try {
+                    Email email = new Email(address, name, menuIn);
+                } catch (Exception e) {
+                    System.out.println("Something went wrong and the email cannot be sent");
+                }
                     //Code for fetching and editing menu of event and confirming booking
                     break;
             
