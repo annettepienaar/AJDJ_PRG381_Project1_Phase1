@@ -1,18 +1,22 @@
 package BusinessLogicLayer;
 
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.text.*;
+
 public class Operations {
-    public void NotifyCancellation()
-    {
-        //Notify Miss. Raheal of any booking cancellations
+    public void NotifyCancellation(String emailAddress, String messageTemplate) {
+        // Notify Miss. Raheal of any booking cancellations
     }
 
-    public void NotifyChange()
-    {
-        //Notify Miss. Raheal of any booking changes such as menu changes
+    public void NotifyChange(String emailAddress, String messageTemplate) {
+        // Notify Miss. Raheal of any booking changes such as menu changes
     }
 
-    public void NotifyConfirmed()
-    {
-        //Notify client when booking has been confirmed
+    public void NotifyConfirmed(String emailAddress, String messageTemplate) {
+        // Notify client when booking has been confirmed
     }
+
+    
 }
