@@ -45,7 +45,7 @@ public class CustomerMenu {
 
         int option = scanner.nextInt();
 
-        String bookingNum, cusID;
+        String bookingNum = "", cusID = "";
         
         while (option != 4) {
             MyMenu menu = MyMenu.values()[option];
@@ -54,7 +54,7 @@ public class CustomerMenu {
                 case NewBook:
                     //Code for customer to make new booking
                     
-
+                    float totalPrice = 0;
                     boolean customerChk = false;
                     while (customerChk == false) {
                         System.out.println("Please enter customer ID");
@@ -81,7 +81,7 @@ public class CustomerMenu {
                         lastBookingNum++;
                         bookingNumAuto ="" + lastBookingNum;
                     }
-                    String eventType;
+                    String eventType = "";
                     boolean eventTypeChk = false;
                     while(eventTypeChk == false){
                         System.out.println("Enter event type: Wedding or Birthday");
@@ -100,20 +100,26 @@ public class CustomerMenu {
                     String eventTime = scanner.next();
 
                     //Insert menu print function here.
-                    String menuInput;
+                    
+                    String menuInput = "";
+
+                    float childPrice = 0, adultPrice = 0;
+
                     boolean menuChk = false;
-                    while (menuChk == false) {
-                        System.out.println("Enter menu ID from selection above");
+                    while (menuChk== false) {
+                        System.out.println("Enter menu ID from s election above");
                         menuInput = scanner.next();
-                        for (Menu menuItem : allMenuItems ) {
-                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
+                        for (Menu menuID : allMenuItems) {
+                            if (menuID.getFoodID().equalsIgnoreCase(menuInput)) {
                                 menuChk = true;
+                                childPrice = menuID.getChildPrice();
+                                adultPrice = menuID.getNormalPrice();
                             }
                         }
                     }
 
                     //insert venue print function here
-                    String venueInput;
+                    String venueInput = "";
                     boolean venueChk = false;
                     while (venueChk == false) {
                         System.out.println("Enter venue ID from selection above");
@@ -126,7 +132,9 @@ public class CustomerMenu {
                     }
 
                     //insert decoration print function
-                    String decorInput;
+                    String decorInput = "";
+                    float decoPrice = 0;
+
                     boolean decorChk = false;
                     while (decorChk == false) {
                         System.out.println("Enter decoration from selection above");
@@ -134,6 +142,7 @@ public class CustomerMenu {
                         for (Decoration decorItem : allDecorations) {
                             if (decorItem.getDecorationID().equalsIgnoreCase(decorInput)) {
                                 decorChk = true;
+                                decoPrice = decorItem.getPrice();
                             }
                         }                       
                     }
@@ -143,8 +152,11 @@ public class CustomerMenu {
                     int totalChild = scanner.nextInt();
 
                     String confirmationDate = "";
+                    
+                    float totalPriceCalc = (float)(totalAdults * adultPrice) + (totalChild * childPrice) + decoPrice;
 
-                    myAccess.addEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild, totalprice, customerID);
+                    myAccess.addEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild,totalPriceCalc,cusID);
+                    
 
                     break;
 
@@ -204,7 +216,7 @@ public class CustomerMenu {
                     System.out.println("Booking Number\tEvent Type\tEvent Date\tEvent Time\tConfirmation Date\tFood ID\t\tVenue ID\tDecoration ID\tTotal Adults\tTotal Kids\tTotal Price\tCustomer Id");
 
                     for (Event selcEvent : selectedEvents) {
-                        System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.getTotalPrice()+ "\t\t" + selcEvent.getCustomerId());
+                        System.out.println(selcEvent.getBookingNumber() + "\t\t" + selcEvent.getEventType() + "\t\t" + selcEvent.getEventDate() + "\t" + selcEvent.getEventTime() + "\t\t" + selcEvent.getConfirmationDate() + " \t\t" + selcEvent.getFoodID() + "\t\t" + selcEvent.getVenueID() + "\t\t" + selcEvent.getDecorationID() + "\t\t" + selcEvent.getTotalAdults() + "\t\t" + selcEvent.getTotalKids() + "\t\t" + selcEvent.CalculateFinalPrice()+ "\t\t" + selcEvent.getCustomerId());
                     }
 
                     //Code for fetching event info with matching booking number
@@ -212,7 +224,7 @@ public class CustomerMenu {
     
                 case Update:
                     
-
+                    String menuIn = "";
                     boolean updateChk = false;
                     while (updateChk == false) {
                         System.out.println("Enter your booking Number: ");
@@ -223,16 +235,16 @@ public class CustomerMenu {
                     menuChk = false;
                     while (menuChk == false) {
                         System.out.println("Enter menu ID from selection above");
-                        menuInput = scanner.next();
+                        menuIn = scanner.next();
                         for (Menu menuItem : allMenuItems ) {
-                            if (menuItem.getFoodID().equalsIgnoreCase(menuInput)) {
+                            if (menuItem.getFoodID().equalsIgnoreCase(menuIn)) {
                                 menuChk = true;
                             }
                         }
                     }
                     for (Event event : allEvents) {
                         if (event.getBookingNumber().equalsIgnoreCase(bookingNum)) {
-                            event.setFoodID(menuInput);
+                            event.setFoodID(menuIn);
                         }
                     }
 

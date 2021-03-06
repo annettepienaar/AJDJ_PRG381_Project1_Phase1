@@ -123,19 +123,21 @@ public class Event {
         this.customerId = customerId;
     }
 
-    //Methods
-    /*public int TotalAttendees(int totalAdults, int totalKids)
+    public int TotalAttendees()
     {
-        Return total number of people attending the event based on total adults and total kids attending
-    }*/
+        //Return total number of people attending the event based on total adults and total kids attending
+        return totalAdults + totalKids;
+    }
 
-    /*public float CalculateDiscount()
+    public float CalculateFinalPrice()
     {
-        Return discount price if attendees are more than 40
-    }*/
+        //Calculates the total cost through the various choices that where made
+        float discount = 0;
 
-    /*public float CalculateTotalPrice()
-    {
+        if(TotalAttendees() >= 40){
+            discount = (float) 0.15;
+        }
 
-    }*/
+        return (float)totalPrice*(1-discount);
+    }
 }

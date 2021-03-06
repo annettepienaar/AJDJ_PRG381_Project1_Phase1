@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 import BusinessLogicLayer.Customer;
 import BusinessLogicLayer.Decoration;
@@ -23,22 +21,6 @@ public class DataAccess {
         fPathVenue = new File("./DataAccessLayer/Venue.txt");
         fPathMenu = new File("./DataAccessLayer/Menu.txt");
         fPathDecoration = new File("./DataAccessLayer/Decoration.txt");
-    }
-
-    //Event.txt
-    public void FileInsert()
-    {
-        //Inserting of new info
-    }
-
-    public void FileModify()
-    {
-        //Modifying / Changing of info
-    }
-
-    public void FileDelete()
-    {
-        //Deletetion of info
     }
 
     public List<Event> getEventInfo() {
@@ -63,6 +45,28 @@ public class DataAccess {
         }
 
         return events;
+    }
+
+    public void DeleteEventInfo(String bookingNumber) throws IOException {
+
+        List<Event> ownEvent = new ArrayList<>();
+        ownEvent = getEventInfo();
+
+        List<Event> newEventLst = new ArrayList<Event>();
+
+            for (Event thisEvent : ownEvent) {
+                if(!thisEvent.getBookingNumber().equalsIgnoreCase(bookingNumber)){
+                    newEventLst.add(thisEvent);
+                }
+            }
+                    
+            FileWriter myWriter = new FileWriter(fPathEvent);
+
+            for (Event info : newEventLst) {
+                myWriter.write(info.getBookingNumber() + ";" + info.getEventType() + ";" + info.getEventDate() + ";" + info.getEventTime() + ";" + info.getConfirmationDate() + ";" + info.getFoodID() + ";" + info.getVenueID() + ";" + info.getDecorationID() + ";" + info.getTotalAdults() + ";" + info.getTotalKids() + ";" + info.getTotalPrice()+ ";" + info.getCustomerId() + "\n");
+            }
+
+            myWriter.close();
     }
 
     //For each of the different files --> Customer.txt, Event.txt, Venue.txt, Menu.txt, Decoration.txt
