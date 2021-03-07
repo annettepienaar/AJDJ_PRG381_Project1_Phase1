@@ -16,9 +16,9 @@ public class PrintFormatting {
         }
     }
     public static void formatMenu(List<Menu> menuList){
-        String formatString = "%-10s %15s %15f %15f";
+        String formatString = "%-10s %25s %15f %15f";
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%10s %15s %15s %15s","MenuID","Name","NormalPrice","ChildPrice\n");
+        System.out.printf("%10s %25s %15s %15s","MenuID","Name","NormalPrice","ChildPrice\n");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         for (Menu menu : menuList) {
@@ -28,10 +28,10 @@ public class PrintFormatting {
     }
 
     public static void formatVenue(List<Venue> venueList){
-        String formatString = "%-10s %15s %20s %15s";
+        String formatString = "%-10s %20s %30s %15s";
 
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%10s %15s %20s %15s","VenueID","Name","Address","PhoneNumber\n");
+        System.out.printf("%10s %20s %30s %15s","VenueID","Name","Address","PhoneNumber\n");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         for (Venue venue : venueList) {
@@ -41,10 +41,10 @@ public class PrintFormatting {
     }
     
     public static void formatDecoratoin(List<Decoration> decorationList){
-        String formatString = "%-15s %15s %15f";
+        String formatString = "%-15s %30s %15f";
         
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%15s %15s %15s","DecorationID","Name","Price\n");
+        System.out.printf("%15s %30s %15s","DecorationID","Name","Price\n");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         for (Decoration decoration : decorationList) {

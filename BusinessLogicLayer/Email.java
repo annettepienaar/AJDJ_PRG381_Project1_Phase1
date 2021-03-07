@@ -14,12 +14,12 @@ public class Email {
 
         //Messages would be writing to stream (need MSTP server to send emails)
 
-        message += "mail from: job$business.co.za \n";
+        message += "mail from: job@business.co.za \n";
         message += "rcpt to: " + emailAddress + "\n";
 
         message += "Subject: Customer Menu changes\n";
         
-        message += "Customer " + name + "'s (" + emailAddress + ") has updated his menu to " + menuType + "\n";
+        message += "Customer " + name + " (" + emailAddress + ") has updated his menu to " + menuType + "\n";
 
         message += "\n.\n";
 

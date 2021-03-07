@@ -2,9 +2,7 @@ package PresentationLayer;
 import java.util.Scanner;
 
 import java.util.List;
-import java.io.IOException;
 import java.util.ArrayList;
-
 import BusinessLogicLayer.Decoration;
 import BusinessLogicLayer.Email;
 import BusinessLogicLayer.Event;
@@ -57,7 +55,7 @@ public class CustomerMenu {
                 case NewBook:
                     //Code for customer to make new booking
                     
-                    float totalPrice = 0;
+                    
                     boolean customerChk = false;
                     while (customerChk == false) {
                         System.out.println("Please enter customer ID");
@@ -159,10 +157,11 @@ public class CustomerMenu {
 
                     String confirmationDate = "";
                     
-                    float totalPriceCalc = (float)(totalAdults * adultPrice) + (totalChild * childPrice) + decoPrice;
+                    float totalPrice = (float)(totalAdults * adultPrice) + (totalChild * childPrice) + decoPrice;
 
-                    myAccess.addEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild,totalPriceCalc,cusID);
+                    myAccess.addEvent(bookingNumAuto, eventType, eventDate, eventTime, confirmationDate, menuInput, venueInput, decorInput, totalAdults, totalChild,totalPrice,cusID);
                     
+                    allEvents = myAccess.getEventInfo();
 
                     break;
 
@@ -204,8 +203,11 @@ public class CustomerMenu {
                     }
 
                     myAccess.addCustomer(cusName, cusSur, cusPhone, cusEmail, cusAddress, cusIDAuto);
+
+                    allCustomers = myAccess.getCustomerInfo();
                     break;
-    
+                    
+                    
                 case View:
                     //Code to show a customers bookings
                     System.out.println("Enter your customerID: ");
@@ -277,6 +279,7 @@ public class CustomerMenu {
                     System.out.println("Something went wrong and the email cannot be sent");
                 }
                     //Code for fetching and editing menu of event and confirming booking
+                    allEvents = myAccess.getEventInfo();
                     break;
             
                 default:
