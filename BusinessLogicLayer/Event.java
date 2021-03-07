@@ -1,17 +1,17 @@
 package BusinessLogicLayer;
 
 public class Event {
-    //Booking Number;Event Type;Event Date;Event Time;Total Adults;Total Kids;Total Price;Confirmation Date;FoodID;VenueID;DecorationID
+    //Booking Number;Event Type;Event Date;Event Time;Confirmation Date;FoodID;VenueID;DecorationID;Total Adults;Total Kids;Total Price
     //Keeping track of all events that have been registered to date
 
     //Fields
-    String bookingNumber, eventType, eventDate, eventTime, confirmationDate, foodID, venueID, decorationID;
+    String bookingNumber, eventType, eventDate, eventTime, confirmationDate, foodID, venueID, decorationID, customerId;
     int totalAdults, totalKids;
     float totalPrice;
 
     //Constructor
     public Event(String bookingNumber, String eventType, String eventDate, String eventTime, String confirmationDate,
-            String foodID, String venueID, String decorationID, int totalAdults, int totalKids, float totalPrice) {
+            String foodID, String venueID, String decorationID, int totalAdults, int totalKids, float totalPrice, String customerId) {
         this.bookingNumber = bookingNumber;
         this.eventType = eventType;
         this.eventDate = eventDate;
@@ -23,6 +23,7 @@ public class Event {
         this.totalAdults = totalAdults;
         this.totalKids = totalKids;
         this.totalPrice = totalPrice;
+        this.customerId = customerId;
     }
 
     //Getters and Setters
@@ -114,19 +115,29 @@ public class Event {
         this.totalPrice = totalPrice;
     }
 
-    //Methods
-    /*public int TotalAttendees(int totalAdults, int totalKids)
-    {
-        Return total number of people attending the event based on total adults and total kids attending
-    }*/
+    public String getCustomerId() {
+        return customerId;
+    }
 
-    /*public float CalculateDiscount()
-    {
-        Return discount price if attendees are more than 40
-    }*/
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
 
-    /*public float CalculateTotalPrice()
+    public int TotalAttendees()
     {
+        //Return total number of people attending the event based on total adults and total kids attending
+        return totalAdults + totalKids;
+    }
 
-    }*/
+    public float CalculateFinalPrice()
+    {
+        //Calculates the total cost through the various choices that where made
+        float discount = 0;
+
+        if(TotalAttendees() >= 40){
+            discount = (float) 0.15;
+        }
+
+        return (float)totalPrice*(1-discount);
+    }
 }
